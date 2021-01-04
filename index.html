@@ -1,0 +1,59 @@
+<html>
+
+<body>
+    <div id="root" style="background:red;">
+        <div>123</div>
+        <span>123-span</span>
+        <img src='./joker.jpeg' />
+        <div class="bg"></div>
+        <embed src="./tuijie.svg" type="image/svg+xml" />
+    </div>
+    <style>
+        body {
+            height: 100%;
+            width: 100%;
+            overflow: auto;
+        }
+
+        span {
+            border: 1px solid #ccc;
+        }
+
+        @font-face {
+            font-family: myFirstFont;
+            src: url(sansation_light.woff);
+        }
+
+        div {
+            font-family: myFirstFont;
+        }
+
+        .bg {
+            width: 50px;
+            height: 50px;
+            background-image: url('./illusion.jpg');
+        }
+
+        .bg:before {
+            content: '123';
+            background: green;
+        }
+
+        #root svg {
+            color: red;
+        }
+    </style>
+    <link href="./styles.css">
+    <script src="./index.js"></script>
+    <script>
+        const dom = document.body;
+        domtoimage.toPng(dom).then(res => {
+            const img = new Image()
+            img.src = res
+            document.body.append(img)
+            console.log(res)
+        })
+    </script>
+</body>
+
+</html>
