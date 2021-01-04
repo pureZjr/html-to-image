@@ -62,7 +62,6 @@
       .then(inlineImages)
       .then(applyOptions)
       .then(function (clone) {
-        console.log(clone);
         return makeSvgDataUri(
           clone,
           options.width || util.width(node),
@@ -236,6 +235,7 @@
         .then(copyUserInput)
         .then(fixSvg)
         .then(function () {
+          console.log(clone);
           return clone;
         });
       // 克隆节点上面所有使用的样式。
@@ -278,6 +278,7 @@
             formatPseudoElementStyle(className, element, style)
           );
           clone.appendChild(styleElement);
+          console.log("clone", clone);
           function formatPseudoElementStyle(className, element, style) {
             var selector = "." + className + ":" + element;
             var cssText = style.cssText
@@ -532,7 +533,9 @@
         image.src = uri;
       });
     }
-
+    /**
+     * 请求资源，并且将资源转成dataUrl形式
+     */
     function getAndEncode(url) {
       var TIMEOUT = 30000;
       if (domtoimage.impl.options.cacheBust) {
@@ -699,7 +702,9 @@
         return !util.isDataUrl(url);
       });
     }
-
+    /**
+     * 将资源下载好，并且转成dataUrl，将原本的加载url形式替换为加载dataUrl形式
+     */
     function inline(string, url, baseUrl, get) {
       return Promise.resolve(url)
         .then(function (url) {
@@ -720,7 +725,9 @@
         );
       }
     }
-
+    /**
+     * 就是 inline 的一个批处理
+     */
     function inlineAll(string, baseUrl, get) {
       if (nothingToInline()) return Promise.resolve(string);
 
