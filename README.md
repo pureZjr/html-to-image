@@ -1,6 +1,6 @@
-### 学习domtoimage
+### 学习 domtoimage
 
-index.js文件就是domtoimage的代码，里面有注释
+index.js 文件就是 domtoimage 的代码，里面有注释
 
 可以自行运行查看效果
 
@@ -8,4 +8,4 @@ index.js文件就是domtoimage的代码，里面有注释
 
 运行 `node run.js`
 
-浏览器打开 [地址](localhost:8081)
+浏览器打开 [地址](http://localhost:8081/#/)
